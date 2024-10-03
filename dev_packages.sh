@@ -18,4 +18,5 @@ sudo dnf install -y vim \
   fzf \
   ripgrep \
   fd-find \
-  bat
+  bat \
+  tmux
