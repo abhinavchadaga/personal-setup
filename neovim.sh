@@ -13,13 +13,20 @@ nvm use --lts
 npm i -g neovim
 
 # setup python3 support for neovim
-sudo dnf install -y python3-neovim
+sudo $PKG_MANAGER install -y python3-neovim
 
 # luarocks package manager for luacheck
-sudo dnf install -y luarocks
+sudo $PKG_MANAGER install -y luarocks
 
 # install neovim
-sudo dnf install -y neovim
+if [ "$PKG_MANAGER" = "dnf" ]; then
+    sudo $PKG_MANAGER install -y neovim
+elif [ "$PKG_MANAGER" = "apt" ]; then
+    sudo add-apt-repository ppa:neovim-ppa/unstable -y
+    sudo $PKG_MANAGER update
+    sudo $PKG_MANAGER install -y neovim
+fi
+
 neovim_config_dir="$HOME/.config/nvim"
 
 if [ ! -e "$neovim_config_dir" ]; then
