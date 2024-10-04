@@ -15,7 +15,7 @@ if [ -f /etc/os-release ]; then
   . /etc/os-release
   OS=$NAME
   if echo "$OS" | grep -qi "ubuntu"; then
-    PKG_MANAGER="apt"
+    PKG_MANAGER="apt-get"
     echo "detected UBUNTU"
   elif echo "$OS" | grep -qi "fedora"; then
     PKG_MANAGER="dnf"
@@ -26,9 +26,9 @@ if [ -f /etc/os-release ]; then
   fi
 fi
 
-# sudo "$PKG_MANAGER" update -y && sudo "$PKG_MANAGER" upgrade -y
-# sudo "$PKG_MANAGER" install -y zsh
-# touch "$HOME/.zshrc"
+sudo "$PKG_MANAGER" update -y && sudo "$PKG_MANAGER" upgrade -y
+sudo "$PKG_MANAGER" install -y zsh
+touch "$HOME/.zshrc"
 
 # Export PKG_MANAGER for use in other scripts
 export PKG_MANAGER
@@ -39,5 +39,7 @@ export PKG_MANAGER
 ./nvm.sh
 ./neovim.sh
 ./tmux.sh
+./pipx.sh
+./aider.sh
 chsh -s "$(which zsh)"
 exit
