@@ -18,7 +18,7 @@ sudo $PKG_MANAGER install -y vim \
     ripgrep \
     fd-find \
     bat \
-    tmux
+    tmux \
 
 # Install additional packages for Fedora
 if [ "$PKG_MANAGER" = "dnf" ]; then
