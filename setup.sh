@@ -28,7 +28,7 @@ fi
 
 sudo "$PKG_MANAGER" update -y && sudo "$PKG_MANAGER" upgrade -y
 sudo "$PKG_MANAGER" install -y zsh
-touch "$HOME/.zshrc"
+touch "$HOME/.zshrc"  # We'll keep this line to ensure the file exists
 
 # Export PKG_MANAGER for use in other scripts
 export PKG_MANAGER
