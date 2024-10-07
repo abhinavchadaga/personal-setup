@@ -20,6 +20,7 @@ install_pipx() {
     pipx ensurepath
   elif [ "$PKG_MANAGER" = "apt-get" ]; then
     ubuntu_version=$(get_ubuntu_version)
+    sudo apt-get install bc
     if [ "$(echo "$ubuntu_version >= 23.04" | bc)" -eq 1 ]; then
       sudo apt-get install -y pipx
       pipx ensurepath
@@ -33,7 +34,7 @@ install_pipx() {
   fi
 
   # add completions to zshrc
-  echo 'eval "$(register-python-argcomplete pipx)"' >> ~/.zshrc
+  echo 'eval "$(register-python-argcomplete pipx)"' >>~/.zshrc
 }
 
 # Check if pipx is installed, if not, install it
