@@ -26,9 +26,23 @@ if [ -f /etc/os-release ]; then
   fi
 fi
 
+# detect the architecture
+ARCH=$(uname -m)
+if [[ $ARCH == "x86_64" ]]; then
+  ARCH_TYPE="x86"
+elif [[ $ARCH == "aarch64" || $ARCH == "arm64" ]]; then
+  ARCH_TYPE="arm"
+else
+  echo "Unsupported architecture: $ARCH"
+  exit 1
+fi
+
+echo "Detected architecture: $ARCH_TYPE"
+export ARCH_TYPE
+
 sudo "$PKG_MANAGER" update -y && sudo "$PKG_MANAGER" upgrade -y
 sudo "$PKG_MANAGER" install -y zsh
-touch "$HOME/.zshrc"  # We'll keep this line to ensure the file exists
+touch "$HOME/.zshrc" # We'll keep this line to ensure the file exists
 
 # Export PKG_MANAGER for use in other scripts
 export PKG_MANAGER
@@ -39,7 +53,6 @@ export PKG_MANAGER
 ./nvm.sh
 ./neovim.sh
 ./tmux.sh
-./pipx.sh
 ./aider.sh
 chsh -s "$(which zsh)"
 exit
