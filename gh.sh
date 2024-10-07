@@ -16,3 +16,20 @@ elif [ "$PKG_MANAGER" = "apt-get" ]; then
 fi
 
 gh auth login
+
+# set up some git aliases
+
+aliases='
+[alias]
+  br = "branch"
+  cim = "commit -m"
+  cp  = "cherry-pick"
+  st = "status -s"
+  lg = "log --oneline --graph --decorate --all"
+  co = "checkout"
+  cob = "checkout -b"
+[push]
+  default = simple
+[color]
+  ui = true
+'
