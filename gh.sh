@@ -33,3 +33,12 @@ aliases='
 [color]
   ui = true
 '
+
+# Append aliases to .gitconfig if it exists
+if [ -f "$HOME/.gitconfig" ]; then
+    echo "$aliases" >> "$HOME/.gitconfig"
+    echo "Git aliases have been appended to your .gitconfig file."
+else
+    echo "Warning: .gitconfig file not found in your home directory."
+    echo "Git aliases were not added."
+fi
