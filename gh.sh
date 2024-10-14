@@ -38,6 +38,6 @@ if [ -f "$HOME/.gitconfig" ]; then
   echo "$git_aliases" >>"$HOME/.gitconfig"
   echo "Git aliases have been appended to your .gitconfig file."
 else
-  echo "Warning: .gitconfig file not found in your home directory."
-  echo "Git aliases were not added."
+  echo ".gitconfig file not found...creating..."
+  echo "$git_aliases" >"$HOME/.gitconfig"
 fi

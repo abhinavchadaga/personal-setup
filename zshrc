@@ -48,8 +48,13 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-# Aliases
-alias ls='ls --color'
+# ls aliases
+alias l='ls --color'
+alias ll='l -l'
+alias lla="l -a"
+
+# git alias
+alias g='git'
 
 # fzf options
 export FZF_DEFAULT_COMMAND="fd --type file --color=always"

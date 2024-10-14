@@ -22,9 +22,10 @@ sudo $PKG_MANAGER install -y luarocks
 if [ "$PKG_MANAGER" = "dnf" ]; then
   sudo $PKG_MANAGER install -y neovim
 elif [ "$PKG_MANAGER" = "apt-get" ]; then
-  sudo add-apt-repository ppa:neovim-ppa/unstable -y
-  sudo $PKG_MANAGER update
-  sudo $PKG_MANAGER install -y neovim
+  sudo apt-get install -y software-properties-common
+  sudo add-apt-repository -y ppa:neovim-ppa/unstable
+  sudo apt-get update
+  sudo apt-get install -y neovim
 fi
 
 neovim_config_dir="$HOME/.config/nvim"

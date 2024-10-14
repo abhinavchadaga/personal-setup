@@ -34,7 +34,8 @@ install_pipx() {
   fi
 
   # add completions to zshrc
-  echo 'eval "$(register-python-argcomplete pipx)"' >>~/.zshrc
+  echo 'eval "$(register-python-argcomplete pipx)"' >>"$HOME/.zshrc"
+  source "$HOME/.zshrc"
 }
 
 # Check if pipx is installed, if not, install it

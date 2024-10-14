@@ -24,7 +24,8 @@ sudo $PKG_MANAGER install -y vim \
 if [ "$PKG_MANAGER" = "dnf" ]; then
   sudo $PKG_MANAGER install -y git-all \
     clang-tools-extra \
-    fzf
+    fzf \
+    openssl-dev
 fi
 
 # Install additional packages for Ubuntu
@@ -44,4 +45,9 @@ if [ "$PKG_MANAGER" = "apt-get" ]; then
   curl -L "$fzf_link" -o 'fzf.tar.gz'
   tar -xf 'fzf.tar.gz'
   sudo mv 'fzf' '/usr/local/bin'
+
+  sudo apt-get install -y python3-venv libssl-dev
 fi
+
+# install rustc and cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
