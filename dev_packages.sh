@@ -25,12 +25,12 @@ if [ "$PKG_MANAGER" = "dnf" ]; then
   sudo $PKG_MANAGER install -y git-all \
     clang-tools-extra \
     fzf \
-    openssl-dev
+    openssl-devel
 fi
 
 # Install additional packages for Ubuntu
 if [ "$PKG_MANAGER" = "apt-get" ]; then
-  sudo $PKG_MANAGER install -y clang-tools
+  sudo $PKG_MANAGER install -y clang-tools clang-format clangd clang-tidy
 
   fzf_link=""
   if [[ $ARCH_TYPE == "x86" ]]; then

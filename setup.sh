@@ -53,7 +53,7 @@ export PKG_MANAGER
 ./nvm.sh
 ./neovim.sh
 ./tmux.sh
-./aider.sh
+# ./aider.sh
 
 chsh -s "$(which zsh)"
 exit
